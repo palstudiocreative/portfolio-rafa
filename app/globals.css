@@ -1,26 +1,128 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #f5f2ec;
+  --ink: #15130f;
+  --accent: #c33a1c;
+  --ink-soft: #57534a;
+  --line: #15130f1f;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-accent: var(--accent);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --font-sans: var(--font-sans-raw);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Padding lateral consistente para todo el sitio */
+.edge {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+@media (min-width: 640px) {
+  .edge {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .edge {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* Metadata pequeña: la unidad tipográfica secundaria del sistema */
+.label {
+  font-size: 0.8125rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-soft);
+}
+/* Permite que .label herede el color que le pidamos (blanco u oscuro)
+   en vez de quedarse siempre con el gris por defecto */
+.text-paper .label,
+.label.text-paper {
+  color: var(--paper);
+}
+.text-ink .label,
+.label.text-ink {
+  color: var(--ink);
+}
+
+/* Numeral fantasma usado como recurso gráfico recurrente */
+.ghost-index {
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--line);
+  line-height: 0.8;
+}
+
+/* Misma idea, para usar sobre fotografías oscuras en vez de fondo claro */
+.ghost-index-light {
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--paper) 55%, transparent);
+  line-height: 0.8;
+}
+
+/* Cursor personalizado — solo en dispositivos con puntero fino */
+.cursor-pill {
+  display: none;
+}
+@media (pointer: fine) {
+  .cursor-pill {
+    display: flex;
+  }
+}
+
+/* Comportamiento único de enlace de texto para todo el sitio */
+.nav-link {
+  position: relative;
+  padding-bottom: 0.15em;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transition: right 0.4s var(--ease);
+}
+.nav-link:hover::after {
+  right: 0;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
