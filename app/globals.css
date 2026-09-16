@@ -48,13 +48,16 @@ body {
   letter-spacing: 0.2em;
   color: var(--ink-soft);
 }
-/* Permite que .label herede el color que le pidamos (blanco u oscuro)
-   en vez de quedarse siempre con el gris por defecto */
-.text-paper .label,
+/* Permite que .label reciba el color que le pidamos (blanco u oscuro) en
+   vez de quedarse siempre con el gris por defecto. Solo como selector
+   compuesto sobre el propio elemento (.label.text-paper) — la variante
+   por ascendencia (.text-paper .label) se quitó porque, con la misma
+   especificidad, competía con esta regla por orden de aparición y el
+   <body> siempre lleva text-ink, así que cualquier .label.text-paper
+   perdía y el texto salía invisible sobre fondos oscuros. */
 .label.text-paper {
   color: var(--paper);
 }
-.text-ink .label,
 .label.text-ink {
   color: var(--ink);
 }

@@ -60,9 +60,10 @@ export default async function ProjectPage(
         }`}
       >
         <Link href="/#trabajo" className="nav-link">
-          ← Volver
+          <span className="sm:hidden">←</span>
+          <span className="hidden sm:inline">← Volver</span>
         </Link>
-        <nav className="flex gap-5 sm:gap-8">
+        <nav className="flex gap-3 sm:gap-5 lg:gap-8">
           <Link href="/#perfil" className="nav-link">
             Perfil
           </Link>
@@ -73,7 +74,7 @@ export default async function ProjectPage(
             Contacto
           </Link>
         </nav>
-        {project.year && <span>{project.year}</span>}
+        {project.year && <span className="hidden sm:inline">{project.year}</span>}
       </header>
 
       <main className="flex flex-1 flex-col">
@@ -184,13 +185,13 @@ export default async function ProjectPage(
 
                   {project.slug === "moldolab" && (
                     <>
-                      <MoldoLabLogo className="-translate-x-8 mt-44 h-auto w-full text-accent sm:-translate-x-12" />
-                      <div className="mt-12 flex justify-end">
+                      <MoldoLabLogo className="mt-44 h-auto w-full text-accent sm:-translate-x-12" />
+                      <div className="mt-12 flex justify-center sm:justify-end">
                         <a
                           href="https://rafaelpalacios21.github.io/WEB-MOLDO/color-lab.html"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mr-6 rounded-full bg-accent px-8 py-4 text-sm font-bold uppercase tracking-[0.15em] text-paper transition-transform hover:scale-[1.03] sm:mr-10"
+                          className="rounded-full bg-accent px-8 py-4 text-sm font-bold uppercase tracking-[0.15em] text-paper transition-transform hover:scale-[1.03] sm:mr-10"
                         >
                           Ver la web del proyecto
                         </a>

@@ -32,7 +32,7 @@ export default function SiteFooter() {
             <a
               href={`mailto:${profile.studio.email}`}
               data-cursor="OPEN"
-              className="mt-8 block break-all font-black leading-[1.05] text-[6.5vw] transition-colors hover:text-accent sm:text-[2.2vw]"
+              className="mt-8 block break-all font-black leading-[1.05] text-[4.6vw] transition-colors hover:text-accent sm:text-[2.2vw]"
             >
               {profile.studio.email}
             </a>
@@ -70,7 +70,7 @@ export default function SiteFooter() {
             <a
               href={`mailto:${profile.contact.email}`}
               data-cursor="OPEN"
-              className="mt-8 block break-all font-black leading-[1.05] text-[6.5vw] transition-colors hover:text-accent sm:text-[2.2vw]"
+              className="mt-8 block break-all font-black leading-[1.05] text-[4.6vw] transition-colors hover:text-accent sm:text-[2.2vw]"
             >
               {profile.contact.email}
             </a>

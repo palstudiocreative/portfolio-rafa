@@ -228,9 +228,10 @@ export default function HuertaCaseStudy({ project }: { project: Project }) {
         style={{ color: PALETTE.pink }}
       >
         <Link href="/#trabajo" className="nav-link">
-          ← Volver
+          <span className="sm:hidden">←</span>
+          <span className="hidden sm:inline">← Volver</span>
         </Link>
-        <nav className="flex gap-5 sm:gap-8">
+        <nav className="flex gap-3 sm:gap-5 lg:gap-8">
           <Link href="/#perfil" className="nav-link">
             Perfil
           </Link>
@@ -241,7 +242,7 @@ export default function HuertaCaseStudy({ project }: { project: Project }) {
             Contacto
           </Link>
         </nav>
-        {project.year && <span>{project.year}</span>}
+        {project.year && <span className="hidden sm:inline">{project.year}</span>}
       </motion.header>
 
       <main className="flex flex-1 flex-col">
